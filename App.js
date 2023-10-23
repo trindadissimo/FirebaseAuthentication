@@ -48,7 +48,7 @@ function App(){
             }}
           />
           <Stack.Screen
-            name="Registro"
+            name="Registration"
             component={Registration}
             options={{
               headerTitle: () => <Header name="Autenticação com Firebase"/>,

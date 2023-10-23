@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { firebase } from '../config'
 
 const Dashboard = () => {
-    const [name, setName] = useState('')
+    const [name, setName] = useState([])
 
     useEffect(() => {
         firebase.firestore().collection('users')
@@ -21,15 +21,16 @@ const Dashboard = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={{fontSize:20, fontWeight:'bold'}}>
-                Olá, {name.fistName}
+                Olá! {name.fistName}
             </Text>
+            
             <TouchableOpacity
                 onPress={() => {firebase.auth().signOut()}}
                 style={styles.button}
             >
-                <Text style={{fontSize:22, fontWeight:'bold'}}>
-                    Sign Out
-                </Text>
+            <Text style={styles.buttonText}>
+                Sign Out
+            </Text>
             </TouchableOpacity>
         </SafeAreaView>
     )
@@ -45,11 +46,16 @@ const styles = StyleSheet.create({
     },
     
     button: {
-        marginTop:50,
-        height:70,
-        width:250,
-        backgroundColor:'#026efd',
-        alignItems:'center',
-        borderRadius:50,
-    }
+        width: 150, // Largura desejada
+        height: 60, // Altura desejada
+        backgroundColor: '#026efd',
+        justifyContent: 'center', // Centraliza verticalmente
+        alignItems: 'center', // Centraliza horizontalmente
+        borderRadius: 30,
+    },
+    buttonText: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        color: '#fff',
+    },
 })
